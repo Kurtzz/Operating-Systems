@@ -1,0 +1,64 @@
+SIZE = 4, NUM = 4000
+		Funckje systemowe:
+				User: 0.085 [ms]
+				Sys: 1.461 [ms]
+		Funckje biblioteczne:
+				User: 0.216 [ms]
+				Sys: 0.757 [ms]
+
+SIZE = 4, NUM = 3500
+		Funckje systemowe:
+				User: 0.05 [ms]
+				Sys: 0.893 [ms]
+		Funckje biblioteczne:
+				User: 0.437 [ms]
+				Sys: 1.406 [ms]
+
+SIZE = 512, NUM = 3500
+		Funckje systemowe:
+				User: 0.049 [ms]
+				Sys: 0.845 [ms]
+		Funckje biblioteczne:
+				User: 0.169 [ms]
+				Sys: 0.53 [ms]
+
+SIZE = 512, NUM = 3000
+		Funckje systemowe:
+				User: 0.044 [ms]
+				Sys: 0.626 [ms]
+		Funckje biblioteczne:
+				User: 0.461 [ms]
+				Sys: 1.396 [ms]
+
+SIZE = 4096, NUM = 3000
+		Funckje systemowe:
+				User: 0.041 [ms]
+				Sys: 0.943 [ms]
+		Funckje biblioteczne:
+				User: 0.265 [ms]
+				Sys: 1.577 [ms]
+
+SIZE = 4096, NUM = 2500
+		Funckje systemowe:
+				User: 0.03 [ms]
+				Sys: 0.683 [ms]
+		Funckje biblioteczne:
+				User: 0.496 [ms]
+				Sys: 2.932 [ms]
+
+SIZE = 8192, NUM = 2500
+		Funckje systemowe:
+				User: 0.035 [ms]
+				Sys: 1.181 [ms]
+		Funckje biblioteczne:
+				User: 0.446 [ms]
+				Sys: 3.952 [ms]
+
+SIZE = 8192, NUM = 2000
+		Funckje systemowe:
+				User: 0.022 [ms]
+				Sys: 0.65 [ms]
+		Funckje biblioteczne:
+				User: 0.659 [ms]
+				Sys: 5.955 [ms]
+

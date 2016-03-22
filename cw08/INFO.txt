@@ -1,0 +1,27 @@
+pthread_create—create thread
+#include <pthread.h>
+int pthread_create(
+  pthread_t *thread_id, /* new thread’s ID */
+  const pthread_attr_t *attr, /* attributes (or NULL) */
+  void *(*start_fcn)(void *), /* starting function */
+  void *arg /* arg to starting function */
+);
+/* Returns 0 on success, error number on error */
+
+
+
+pthread_mutex_lock—lock mutex
+#include <pthread.h>
+int pthread_mutex_lock(
+  pthread_mutex_t *mutex /* mutex to lock */
+);
+
+/* Returns 0 on success, error number on error */
+
+
+pthread_mutex_unlock—unlock mutex
+#include <pthread.h>
+int pthread_mutex_unlock(
+  pthread_mutex_t *mutex /* mutex to unlock */
+);
+/* Returns 0 on success, error number on error */

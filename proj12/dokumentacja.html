@@ -1,0 +1,75 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Przemysław Kurc - PROJEKT</title>
+</head>
+<body>
+  <h2>Zadanie</h2>
+    Zadanie polegało na symulacji tunelu kolejowego.</br>
+    Założenia:
+    <ul>
+      <li>W tunelu jest jeden tor, po którym może jechać jednocześnie tylko jeden pociąg</li>
+      <li>Do i z tunelu prowadzi kilka torów, na których przed wjazdem oczekują pociągi</li>
+      <li>Generator generuje pociągi o określonym priorytecie (Ekspres, Pośpieszny, Towarowy)</li>
+      <li>Pociąg i zarządca są procesami</li>
+      <li>Struktura pamięci wspólnej opisuje sytuacje na liniach wjazdowych do tunelu</li>
+      <li>Priorytety są rozstrzygane w momencie decyzji</li>
+    </ul>
+  <h2>Mechanizmy, pomysł, wykonanie zadania</h2>
+  Użyte mechanizmy:
+  <ul>
+    <li>Semafory - każdy pociąg będzie czekał na podniesienie semafora przez zarządcę,</br>
+    co będzie oznaczało zezwolenia na wjazd do tunelu</li>
+    <li>Pamięć dzielona - opisująca sytuację na liniach prowadzących do tunelu i w tunelu</li>
+    <li>Kolejki komunikatów - każda linia będzie posiadała swoją kolejkę komunikatów,</br>
+    w której oczekiwać będą pociągi na zajęcia danej linii. </br>
+    Kolejka komunikatów sortuje pociągi wg. priorytetu i czasu oczekiwania na tor</li>
+    <li>Sygnały - do komunikacji między procesami.</br>
+    Pociąg będzie sygnalizował nadzorcy wyjazd z tunelu.</br>
+    Nadzorca pociągowi czekającemu w kolejce będzie zezwalał na wjazd na tor.</li>
+  </ul>
+
+  W projekcie są 3 procesy: zarządca, generator i pociąg (każdy pociąg jest osobnym procesem). </br>
+  <h4>Zarządca:</h4>
+  Uruchamia generator, po czym przystępuje do pracy.</br>
+  <ol>
+    <li>Zezwolenie pociągom oczekującym w kolejkach wjazd na wolne tory (jeden na tor)</br>
+    Zostaje wybrany pociąg o najwyższym priorytecie i najdłużej czekający z danej kolejki</li>
+    <li>Znajduje pociąg o najwyższym priorytecie z oczekujących na torach</li>
+    <li>Otwiera semafor, zezwalając temu pociągowi wjechać</li>
+    <li>Czeka na sygnał od pociągu, że ten przejechał przez tunel</li>
+    <li>Blokuje semafor</li>
+    <li>Kolejny obieg pętli</li>
+  </ol>
+  Dodatkowo zarządca na bieżąco uaktualnia opis sytuacji w pamięci wspólnej.
+
+  <h4>Generator</h4>
+  <ol>
+    <li>Losuje priorytet pociągu i linię, którą będzie chciał wjechać</li>
+    <li>Tworzy proces-pociąg</li>
+    <li>Czeka 1 lub 2 sekundy</li>
+    <li>Kolejny obieg pętli</li>
+  </ol>
+
+  <h4>Pociąg</h4>
+  <ol>
+    <li>Ustawia się w kolejce (komunikatów) do danego przez generator toru</li>
+    <li>Oczekuje na sygnał od nadzorcy, że może zająć dany tor przed tunelem</li>
+    <li>Oczekuje na zwolnienie semaforu, czyli zezwolenie na wjazd do tunelu</li>
+    <li>Przejeżdża tunel z adekwatną prędkością dla typu pociągu jakim jest</li>
+    <li>Sygnalizuje nadzorcy przejechanie przez tunel</li>
+    <li>Zwalnia semafor swojego toru</li>
+    <li>Kończy swój żywot</li>
+  </ol>
+
+  <h4>Sposób uruchomienia</h4>
+  ./supervisor</br>
+  (Generator i pociągi uruchamia są jako procesy potomne)
+
+  <h4>Dodatkowo</h4>
+  Dostępny jest program "preview", który w prymitywny sposób w konsoli, na podstawie pamięci wspólnej, prezentuje przebieg działania programu.</br>
+  Można go uruchomić w osobnej konsoli poprzez ./preview</br></br>
+
+
+</body>
+</html>
